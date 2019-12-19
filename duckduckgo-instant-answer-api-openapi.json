@@ -1,0 +1,174 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "DuckDuckGo Instant Answer API",
+        "description": "Our Instant Answer API gives you free access to many of our instant answers like: topic summaries (API example), categories (API example), disambiguation (API example), and !bang redirects (API example). This API does not include all of our links, however. That is, it is not a full search results API or a way to get DuckDuckGo results into your applications beyond our instant answers. Because of the way we generate our search results, we unfortunately do not have the rights to fully syndicate our results, free or paid. For the same reason, we cannot allow framing our results without our branding. Please see our partnerships page for more info on guidelines and getting in touch with us.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpsapi.duckduckgo.com\/"
+    ],
+    "paths": {
+        "\/": {
+            "get": {
+                "summary": "Search",
+                "description": "Our Zero-click Info API gives you free access to much of our topic summaries, categories, disambiguation, !bang redirects, definitions and more.",
+                "operationId": "ZeroClickInfo",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "callback",
+                        "in": "query",
+                        "description": "Function to callback (for a JSONP formatted response)."
+                    },
+                    {
+                        "name": "format",
+                        "in": "query",
+                        "description": ""
+                    },
+                    {
+                        "name": "no_html",
+                        "in": "query",
+                        "description": "1 to remove HTML from text, e.g. bold and italics."
+                    },
+                    {
+                        "name": "no_redirect",
+                        "in": "query",
+                        "description": "1 to skip HTTP redirects (for !bang commands - see http:\/\/duckduckgo.com\/bang.html)."
+                    },
+                    {
+                        "name": "q",
+                        "in": "query",
+                        "description": "Search terms"
+                    },
+                    {
+                        "name": "skip_disambig",
+                        "in": "query",
+                        "description": "1 to skip disambiguation (D) Type."
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": {
+            "Resource": {
+                "type": "object",
+                "properties": {
+                    "Abstract": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "AbstractSource": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "AbstractText": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "AbstractURL": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Answer": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "AnswerType": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Definition": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "DefinitionSource": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "DefinitionURL": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Heading": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Image": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Redirect": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Type": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "RelatedTopics": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Results": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Result": {
+                "type": "object",
+                "properties": {
+                    "FirstURL": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Result": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Text": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "RelatedTopic": {
+                "type": "object",
+                "properties": {
+                    "FirstURL": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Result": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Text": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            },
+            "Icon": {
+                "type": "object",
+                "properties": {
+                    "Height": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "URL": {
+                        "description": "",
+                        "type": "get"
+                    },
+                    "Width": {
+                        "description": "",
+                        "type": "get"
+                    }
+                }
+            }
+        }
+    }
+}
