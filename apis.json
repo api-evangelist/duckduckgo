@@ -1,0 +1,64 @@
+{
+    "name": "DuckDuckGo",
+    "description": "The Internet privacy company that empowers you to seamlessly take control of your personal information online, without any tradeoffs.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/581-duckduckgo.jpg",
+    "tags": [
+        "api provider",
+        "general data",
+        "have api",
+        "pedestal",
+        "search",
+        "streams"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/duckduckgo\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "DuckDuckGo Instant Answer API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/581-duckduckgo.jpg",
+            "humanURL": "http:\/\/duckduckgo.com",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/duckduckgo-instant-answer-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/duckduckgo-instant-answer-api-openapi.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Base",
+            "url": "http:\/\/api.duckduckgo.com\/"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/duck-duck-go"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/duckduckgo.com\/api"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/duckduckgo"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/duckduckgo"
+        },
+        {
+            "type": "Website",
+            "url": "http:\/\/duckduckgo.com"
+        }
+    ]
+}
