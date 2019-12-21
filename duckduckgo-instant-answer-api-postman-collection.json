@@ -1,5 +1,5 @@
 {
-    "id": "b6933a9933a90b05889e591d4445ffc7",
+    "id": "e40362cc2f3af07878c822cacca76500",
     "name": "DuckDuckGo Instant Answer API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "cc03b76c0a08ab3cbd2b079551bcd7fa",
+            "id": "e3ac397c6cb34c9ed7307a9484ddb378",
             "name": "Search",
             "url": "httpsapi.duckduckgo.com\/\/",
             "description": "Our Zero-click Info API gives you free access to much of our topic summaries, categories, disambiguation, !bang redirects, definitions and more.",
@@ -72,7 +72,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "b6933a9933a90b05889e591d4445ffc7",
+            "collectionId": "e40362cc2f3af07878c822cacca76500",
             "rawModeData": ""
         }
     ]
