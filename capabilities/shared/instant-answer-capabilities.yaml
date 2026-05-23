@@ -1,0 +1,72 @@
+apiVersion: naftiko.dev/v1
+kind: SharedCapabilities
+metadata:
+  name: duckduckgo-instant-answer
+  provider: duckduckgo
+  api: instant-answer-api
+  description: >-
+    Shared capabilities for the DuckDuckGo Instant Answer API. Free,
+    key-less, returns JSON / XML / JSON-P. Surfaces zero-click topic
+    summaries, definitions, calculator/answer types, and !bang redirects.
+spec:
+  capabilities:
+    - id: ddg.instant_answer.lookup_topic
+      title: Look Up Topic Abstract
+      operation: getInstantAnswer
+      parameters:
+        q: { source: input.query }
+        format: { value: json }
+        no_html: { value: 1 }
+        skip_disambig: { value: 1 }
+      returns:
+        - Heading
+        - AbstractText
+        - AbstractURL
+        - Image
+        - Entity
+      governance:
+        attribution_required: true
+        attribution_text: "Results via DuckDuckGo"
+    - id: ddg.instant_answer.resolve_bang
+      title: Resolve !Bang Redirect
+      operation: getInstantAnswer
+      parameters:
+        q: { source: input.bangQuery }
+        format: { value: json }
+        no_redirect: { value: 1 }
+      returns:
+        - Redirect
+      notes: >-
+        When `q` begins with a registered !bang, response.Redirect contains
+        the destination search URL. Use no_redirect=1 to receive the URL
+        rather than HTTP 302.
+    - id: ddg.instant_answer.disambiguate
+      title: Disambiguate Ambiguous Term
+      operation: getInstantAnswer
+      parameters:
+        q: { source: input.term }
+        format: { value: json }
+        skip_disambig: { value: 0 }
+      returns:
+        - Type
+        - RelatedTopics
+      preconditions:
+        - response.Type == 'D'
+    - id: ddg.instant_answer.compute_answer
+      title: Compute Direct Answer
+      operation: getInstantAnswer
+      parameters:
+        q: { source: input.expression }
+        format: { value: json }
+      returns:
+        - Answer
+        - AnswerType
+      notes: >-
+        Covers calculator, color codes, IP echo, conversions and other
+        AnswerType outputs.
+  rate_limits:
+    documented: false
+    guidance: >-
+      DuckDuckGo does not publish numeric rate limits for the Instant Answer
+      API. Throttle conservatively, cache responses, and include a descriptive
+      User-Agent.

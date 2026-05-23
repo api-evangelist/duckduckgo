@@ -1,0 +1,30 @@
+apiCommonsRateLimitsVersion: '0.1'
+provider: duckduckgo
+last_verified: '2026-05-23'
+sources:
+  - https://duckduckgo.com/api
+limits:
+  - api: instant-answer-api
+    base_url: https://api.duckduckgo.com
+    documented: false
+    published_quota: none
+    enforcement: undocumented (subject to anti-abuse throttling)
+    guidance:
+      - send a descriptive User-Agent identifying your application
+      - cache responses where possible (responses are deterministic for a given query)
+      - keep concurrency low; serialize when feasible
+      - attribute DuckDuckGo when displaying results
+    response_signals:
+      - HTTP 200 with empty payload is a normal "no instant answer" outcome - not a rate-limit signal
+      - service returns standard HTTP errors on overload; back off and retry
+  - api: duck-ai
+    surface: web only (no REST API)
+    documented_tier_limits:
+      free: unspecified daily / monthly usage cap
+      plus: higher than free
+      pro: 2x plus
+    enforcement: in-product
+  - api: tracker-radar
+    base_url: https://raw.githubusercontent.com/duckduckgo/tracker-radar/main/
+    enforcement: GitHub raw content rate limits apply (per-IP, ~60 unauthenticated req/hr; ~5000 with a token)
+    guidance: clone the repo or mirror the dataset for bulk consumption

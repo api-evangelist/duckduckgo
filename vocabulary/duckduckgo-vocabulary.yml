@@ -1,0 +1,55 @@
+vocabulary: duckduckgo
+version: '0.1'
+description: >-
+  Domain vocabulary for DuckDuckGo - covering the Instant Answer API, Duck.ai
+  chat proxy, !bang redirect system, Tracker Radar dataset, Email Protection,
+  and Privacy Pro.
+terms:
+  - term: Instant Answer
+    definition: >-
+      Zero-click "answer box" returned at the top of DuckDuckGo search
+      results, sourced from Wikipedia and other structured providers.
+  - term: Abstract
+    definition: Free-text topic summary in an Instant Answer response.
+  - term: AnswerType
+    definition: Type discriminator on the Answer field (e.g. calc, color_code, ip).
+  - term: '!Bang'
+    definition: >-
+      Query-prefix shortcut (since 2008) that 302-redirects to another site's
+      own search. Example: !w filter bubble -> Wikipedia search for
+      "filter bubble". Thousands of registered bangs.
+  - term: Redirect
+    definition: >-
+      Field in the Instant Answer response populated when the query resolves
+      to a !bang; contains the destination URL.
+  - term: Disambiguation
+    definition: Response shape (Type == 'D') listing multiple possible meanings of an ambiguous term.
+  - term: Tracker Radar
+    definition: >-
+      DuckDuckGo's open dataset of third-party domains observed on the web,
+      with prevalence, fingerprinting score, cookie behavior, ownership, and
+      privacy-policy metadata. Distributed under CC BY-NC-SA 4.0.
+  - term: Duck.ai
+    definition: >-
+      Anonymous chat proxy at duck.ai routing prompts to third-party LLMs
+      (Claude, GPT, Llama, Mistral). DuckDuckGo strips identifiers and
+      enforces "no retention / no training" on user prompts.
+  - term: Email Protection
+    definition: >-
+      Free DuckDuckGo service issuing @duck.com forwarding addresses that
+      strip trackers from inbound mail before delivering it to the user's
+      real inbox.
+  - term: Privacy Pro
+    definition: >-
+      Paid bundle - DuckDuckGo VPN, Personal Information Removal, and
+      Identity Theft Restoration.
+  - term: Scam Blocker
+    definition: >-
+      Browser feature (expanded June 2025) protecting against phishing
+      sites, malware, and other common online scams.
+  - term: Tracker
+    definition: A third-party domain that loads on a website to collect user data.
+  - term: Fingerprinting
+    definition: Browser-fingerprinting score (0-3) assigned in Tracker Radar to indicate fingerprinting behavior.
+  - term: Prevalence
+    definition: Fraction (0-1) of crawled sites on which a tracker domain appears.

@@ -1,0 +1,34 @@
+{
+  "$schema": "https://json-structure.org/draft/2025/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/duckduckgo/main/json-structure/instant-answer-response-structure.json",
+  "title": "DuckDuckGo Instant Answer Response Structure",
+  "type": "object",
+  "fields": [
+    { "name": "Heading", "type": "string", "description": "Topic heading" },
+    { "name": "Abstract", "type": "string", "description": "Topic summary, may contain HTML" },
+    { "name": "AbstractText", "type": "string", "description": "Topic summary, plain text" },
+    { "name": "AbstractSource", "type": "string", "description": "Source name (commonly Wikipedia)" },
+    { "name": "AbstractURL", "type": "string", "format": "uri" },
+    { "name": "Image", "type": "string", "description": "Image path or URL" },
+    { "name": "Answer", "type": "string", "description": "Direct answer text (e.g. calculator result)" },
+    { "name": "AnswerType", "type": "string", "description": "Type discriminator for Answer" },
+    { "name": "Definition", "type": "string" },
+    { "name": "Type", "type": "string", "description": "A=article, D=disambiguation, C=category, N=name, E=exclusive, empty=none" },
+    { "name": "Redirect", "type": "string", "description": "Set when query is a !bang" },
+    { "name": "RelatedTopics", "type": "array", "items": "RelatedTopic" },
+    { "name": "Results", "type": "array", "items": "Result" }
+  ],
+  "discriminators": {
+    "ResponseShape": {
+      "by": "Type",
+      "map": {
+        "A": "TopicAbstract",
+        "D": "Disambiguation",
+        "C": "Category",
+        "N": "Name",
+        "E": "Exclusive",
+        "": "BangOrNone"
+      }
+    }
+  }
+}

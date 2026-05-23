@@ -1,0 +1,44 @@
+apiVersion: naftiko.dev/v1
+kind: SharedCapabilities
+metadata:
+  name: duckduckgo-duck-ai
+  provider: duckduckgo
+  api: duck-ai
+  description: >-
+    Anonymizing chat proxy in front of third-party LLMs (Claude, GPT, Llama,
+    Mistral, gpt-oss). No public REST API today; integration is via the web
+    UI (duck.ai) and the in-browser entry inside DuckDuckGo Browser.
+spec:
+  capabilities:
+    - id: ddg.duck_ai.send_message
+      title: Send Anonymous Chat Message
+      surface: web
+      url: https://duck.ai/
+      governance:
+        privacy:
+          ip_stripping: true
+          prompt_retention: none
+          training_use: forbidden
+          quote: "Duck.ai is a feature that allows you to have private conversations with 3rd-party AI chat models, anonymized by us."
+        models:
+          free:
+            - claude-4.5-haiku
+            - gpt-4o-mini
+            - gpt-5-mini
+            - gpt-oss-120b
+            - llama-4-scout
+            - mistral-small-3-24b
+          plus:
+            - claude-sonnet-4.5
+            - gpt-4o
+            - gpt-5.2
+            - llama-4-maverick
+          pro:
+            - claude-opus-4.6
+        limits:
+          plus_vs_free: higher
+          pro_vs_plus: 2x usage
+  notes: >-
+    No documented developer API. For programmatic LLM access, providers'
+    own APIs (Anthropic, OpenAI, Meta, Mistral) should be used directly.
+    Duck.ai is positioned for end-user privacy, not application integration.

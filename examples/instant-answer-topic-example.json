@@ -1,0 +1,44 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.duckduckgo.com/?q=duckduckgo&format=json&pretty=1",
+    "headers": {
+      "Accept": "application/json",
+      "User-Agent": "api-evangelist-duckduckgo-profile/1.0"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/x-javascript"
+    },
+    "body": {
+      "Abstract": "DuckDuckGo is an American software company that offers a number of products oriented towards helping people protect their privacy online.",
+      "AbstractText": "DuckDuckGo is an American software company that offers a number of products oriented towards helping people protect their privacy online.",
+      "AbstractSource": "Wikipedia",
+      "AbstractURL": "https://en.wikipedia.org/wiki/DuckDuckGo",
+      "Image": "/i/e3c5e9b8.png",
+      "Heading": "DuckDuckGo",
+      "Answer": "",
+      "AnswerType": "",
+      "Definition": "",
+      "DefinitionSource": "",
+      "DefinitionURL": "",
+      "RelatedTopics": [
+        {
+          "Result": "<a href=\"https://duckduckgo.com/Tracker_Radar\">Tracker Radar</a> - open dataset of third-party trackers",
+          "FirstURL": "https://duckduckgo.com/Tracker_Radar",
+          "Text": "Tracker Radar - open dataset of third-party trackers"
+        }
+      ],
+      "Results": [],
+      "Type": "A",
+      "Redirect": "",
+      "Entity": "company",
+      "meta": {
+        "src_name": "Wikipedia",
+        "src_url": "https://en.wikipedia.org/wiki/DuckDuckGo"
+      }
+    }
+  }
+}

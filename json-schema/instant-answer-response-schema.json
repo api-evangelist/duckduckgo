@@ -1,0 +1,80 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/duckduckgo/main/json-schema/instant-answer-response-schema.json",
+  "title": "DuckDuckGo Instant Answer Response",
+  "description": "JSON Schema for the DuckDuckGo Instant Answer API response envelope returned by api.duckduckgo.com.",
+  "type": "object",
+  "properties": {
+    "Abstract": { "type": "string" },
+    "AbstractText": { "type": "string" },
+    "AbstractSource": { "type": "string" },
+    "AbstractURL": { "type": "string", "format": "uri" },
+    "Image": { "type": "string" },
+    "ImageHeight": { "type": ["string", "integer"] },
+    "ImageWidth": { "type": ["string", "integer"] },
+    "ImageIsLogo": { "type": ["string", "integer"], "description": "1 if image is a logo, 0 otherwise." },
+    "Heading": { "type": "string" },
+    "Answer": { "type": "string" },
+    "AnswerType": { "type": "string", "description": "e.g. calc, color_code, ip" },
+    "Definition": { "type": "string" },
+    "DefinitionSource": { "type": "string" },
+    "DefinitionURL": { "type": "string" },
+    "RelatedTopics": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/RelatedTopic" }
+    },
+    "Results": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/Result" }
+    },
+    "Type": {
+      "type": "string",
+      "description": "Response type code. A=article, D=disambiguation, C=category, N=name, E=exclusive, empty=nothing."
+    },
+    "Redirect": {
+      "type": "string",
+      "description": "URL to redirect to when query is a !bang."
+    },
+    "Entity": { "type": "string" },
+    "Infobox": {
+      "oneOf": [
+        { "type": "string" },
+        { "type": "object" }
+      ]
+    },
+    "meta": { "type": "object", "additionalProperties": true }
+  },
+  "$defs": {
+    "Icon": {
+      "type": "object",
+      "properties": {
+        "URL": { "type": "string" },
+        "Height": { "type": ["string", "integer"] },
+        "Width": { "type": ["string", "integer"] }
+      }
+    },
+    "Result": {
+      "type": "object",
+      "properties": {
+        "Result": { "type": "string" },
+        "Icon": { "$ref": "#/$defs/Icon" },
+        "FirstURL": { "type": "string", "format": "uri" },
+        "Text": { "type": "string" }
+      }
+    },
+    "RelatedTopic": {
+      "type": "object",
+      "properties": {
+        "Result": { "type": "string" },
+        "Icon": { "$ref": "#/$defs/Icon" },
+        "FirstURL": { "type": "string", "format": "uri" },
+        "Text": { "type": "string" },
+        "Name": { "type": "string" },
+        "Topics": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/RelatedTopic" }
+        }
+      }
+    }
+  }
+}

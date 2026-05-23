@@ -1,0 +1,88 @@
+apiCommonsPlansVersion: '0.1'
+provider: duckduckgo
+url: https://duckduckgo.com/
+last_verified: '2026-05-23'
+sources:
+  - https://duckduckgo.com/api
+  - https://duck.ai/
+  - https://spreadprivacy.com/duckduckgos-new-pro-plan/
+  - https://spreadprivacy.com/ai-subscription-expansion/
+notes: >-
+  DuckDuckGo's search engine, browser, !bangs, Email Protection, Tracker
+  Radar dataset, and the public Instant Answer API are all free of charge.
+  The paid surface is the Duck.ai chat tiers (Plus, Pro) and Privacy Pro
+  (VPN + PIR + ITR). Specific dollar amounts and SKUs vary by region and
+  evolve; this file records the plan shape rather than locked-in prices.
+plans:
+  - id: instant-answer-api-free
+    name: Instant Answer API
+    audience: developer
+    pricing:
+      currency: USD
+      type: free
+      cost: 0
+    features:
+      - free
+      - no API key required
+      - JSON / JSON-P / XML
+      - attribution to DuckDuckGo required when results are displayed
+    rate_limits:
+      documented: false
+      guidance: throttle conservatively, cache responses
+  - id: duck-ai-free
+    name: Duck.ai (Free)
+    audience: end-user
+    pricing:
+      currency: USD
+      type: free
+      cost: 0
+    features:
+      - anonymous proxy to third-party LLMs
+      - models include Claude 4.5 Haiku, GPT-4o mini, GPT-5 mini, gpt-oss-120b, Llama 4 Scout, Mistral Small 3 24B
+      - chat history stored locally only
+  - id: duck-ai-plus
+    name: Duck.ai Plus
+    audience: end-user
+    pricing:
+      currency: USD
+      type: subscription
+      published_amount: see https://duck.ai/
+    features:
+      - free-tier models
+      - Claude Sonnet 4.5, GPT-4o, GPT-5.2, Llama 4 Maverick
+      - higher usage limits than Free
+  - id: duck-ai-pro
+    name: Duck.ai Pro
+    audience: end-user
+    pricing:
+      currency: USD
+      type: subscription
+      published_amount: see https://duck.ai/
+    features:
+      - all Plus models
+      - Claude Opus 4.6
+      - higher reasoning effort
+      - 2x usage limits vs Plus
+  - id: privacy-pro
+    name: Privacy Pro
+    audience: end-user
+    pricing:
+      currency: USD
+      type: subscription
+      published_amount: see https://duckduckgo.com/privacy-pro
+    features:
+      - DuckDuckGo VPN
+      - Personal Information Removal
+      - Identity Theft Restoration
+      - 7-day free trial (per Aug 2025 announcement)
+      - regional availability (primarily US at launch)
+  - id: email-protection-free
+    name: Email Protection
+    audience: end-user
+    pricing:
+      currency: USD
+      type: free
+      cost: 0
+    features:
+      - "@duck.com forwarding addresses"
+      - strips trackers from inbound email before delivery

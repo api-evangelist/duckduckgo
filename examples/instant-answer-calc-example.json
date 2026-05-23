@@ -1,0 +1,28 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.duckduckgo.com/?q=2%2B2&format=json",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/x-javascript"
+    },
+    "body": {
+      "Abstract": "",
+      "AbstractText": "",
+      "Answer": "4",
+      "AnswerType": "calc",
+      "Definition": "",
+      "Heading": "",
+      "Image": "",
+      "RelatedTopics": [],
+      "Results": [],
+      "Type": "",
+      "Redirect": ""
+    }
+  }
+}

@@ -1,0 +1,42 @@
+{
+  "domain": "example-tracker.com",
+  "owner": {
+    "name": "Example Tracker, Inc.",
+    "displayName": "Example Tracker",
+    "privacyPolicy": "https://example-tracker.com/privacy",
+    "url": "https://example-tracker.com"
+  },
+  "source": ["DuckDuckGo Tracker Radar"],
+  "prevalence": 0.0421,
+  "sites": 4210,
+  "subdomains": ["track", "pixel"],
+  "cnames": [],
+  "fingerprinting": 2,
+  "cookies": 0.0398,
+  "categories": ["Advertising", "Analytics"],
+  "performance": {
+    "time": 12,
+    "size": 18,
+    "cpu": 1,
+    "cache": 0
+  },
+  "types": {
+    "script": 4100,
+    "image": 110
+  },
+  "resources": [
+    {
+      "rule": "example-tracker\\.com/pixel/track\\.js",
+      "cookies": 0.0398,
+      "fingerprinting": 2,
+      "subdomains": ["pixel"],
+      "apis": {
+        "Document.cookie": {
+          "url": "example-tracker.com/pixel/track.js"
+        }
+      },
+      "type": "script"
+    }
+  ],
+  "nameservers": ["ns1.example-tracker.com"]
+}

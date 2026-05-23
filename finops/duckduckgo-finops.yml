@@ -1,0 +1,56 @@
+finopsFrameworkVersion: '2024'
+focusVersion: '1.1'
+provider: duckduckgo
+last_verified: '2026-05-23'
+sources:
+  - https://duckduckgo.com/api
+  - https://duck.ai/
+  - https://duckduckgo.com/privacy-pro
+summary: >-
+  DuckDuckGo's developer-facing surface (Instant Answer API, Tracker Radar,
+  Email Protection) is free, so there is no FOCUS-aligned billing telemetry
+  available. The commercial surface is consumer-priced subscriptions
+  (Duck.ai Plus / Pro, Privacy Pro). The FinOps profile below therefore
+  models consumer SaaS rather than usage-metered cloud API spend.
+billingCharacteristics:
+  cloudProvider: DuckDuckGo
+  serviceCategories:
+    - id: developer-api
+      services:
+        - Instant Answer API
+        - Tracker Radar dataset distribution
+      pricing_model: free
+      focus_alignment:
+        ChargePeriodStart: n/a
+        BillingAccountId: n/a
+        ServiceCategory: AI / Search
+        PricingCategory: free
+      cost_governance:
+        responsible_team: Engineering / Search team
+        guidance: cache responses to reduce egress and external traffic
+    - id: consumer-subscriptions
+      services:
+        - Duck.ai Plus
+        - Duck.ai Pro
+        - Privacy Pro (VPN + PIR + ITR)
+      pricing_model: subscription (monthly / annual)
+      focus_alignment:
+        ChargeCategory: Purchase
+        PricingCategory: Committed
+        BillingFrequency: Monthly or Annual
+      cost_governance:
+        responsible_team: Procurement / IT
+        guidance: review trial conversion, regional availability, and seat allocation; not metered per call
+  exportFormats:
+    - none publicly documented
+practices:
+  - principle: Inform
+    actions:
+      - Maintain an internal subscription register for Duck.ai Plus/Pro and Privacy Pro seats.
+  - principle: Optimize
+    actions:
+      - Cache Instant Answer responses to minimize redundant external calls.
+      - Pin or mirror Tracker Radar to avoid GitHub raw-content rate limits.
+  - principle: Operate
+    actions:
+      - Track renewal dates manually; DuckDuckGo does not expose a billing API.

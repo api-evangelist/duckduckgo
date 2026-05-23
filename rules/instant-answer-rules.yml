@@ -1,0 +1,70 @@
+extends: [[spectral:oas, all]]
+formats:
+  - oas3
+rules:
+  ddg-info-contact:
+    description: DuckDuckGo specs must declare a contact pointing at https://duckduckgo.com/api.
+    given: $.info.contact
+    severity: error
+    then:
+      field: url
+      function: pattern
+      functionOptions:
+        match: '^https://duckduckgo\.com/api'
+  ddg-server-https-api-host:
+    description: The Instant Answer server must be api.duckduckgo.com over HTTPS.
+    given: $.servers[*].url
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: '^https://api\.duckduckgo\.com'
+  ddg-operation-id-camel:
+    description: Operation IDs must be lowerCamelCase.
+    given: $.paths.*.*.operationId
+    severity: error
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[a-z][a-zA-Z0-9]+$'
+  ddg-operation-summary-title-case:
+    description: Operation summaries should use Title Case.
+    given: $.paths.*.*.summary
+    severity: warn
+    then:
+      function: pattern
+      functionOptions:
+        match: '^([A-Z][a-zA-Z0-9]*)(\s[A-Z][a-zA-Z0-9]*)*$'
+  ddg-query-format-enum:
+    description: The `format` query parameter must be enumerated to json, xml.
+    given: $.paths.*.*.parameters[?(@.name == 'format')]
+    severity: warn
+    then:
+      field: schema.enum
+      function: defined
+  ddg-required-q-parameter:
+    description: Every operation must accept a required `q` query parameter.
+    given: $.paths.*.get
+    severity: error
+    then:
+      function: schema
+      functionOptions:
+        schema:
+          type: object
+          properties:
+            parameters:
+              type: array
+              contains:
+                type: object
+                properties:
+                  name: { const: q }
+                  in: { const: query }
+                  required: { const: true }
+                required: [name, in, required]
+  ddg-response-includes-redirect:
+    description: Instant Answer responses must document a Redirect field for !bang support.
+    given: $.components.schemas.InstantAnswer.properties
+    severity: warn
+    then:
+      field: Redirect
+      function: defined

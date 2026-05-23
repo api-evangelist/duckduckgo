@@ -1,0 +1,181 @@
+aid: duckduckgo
+url: https://raw.githubusercontent.com/api-evangelist/duckduckgo/refs/heads/main/apis.yml
+name: DuckDuckGo
+kind: company
+description: >-
+  DuckDuckGo is an independent online-privacy company best known for its
+  tracker-free search engine and the DuckDuckGo Browser (iOS, Android, macOS,
+  Windows). It operates the public Instant Answer API at api.duckduckgo.com
+  (free, JSON/XML), the Duck.ai anonymous AI-chat proxy at duck.ai (routes to
+  Anthropic Claude, OpenAI GPT, Meta Llama, Mistral models without storing or
+  training on prompts), the Tracker Radar open dataset (CC BY-NC-SA), Email
+  Protection (@duck.com forwarding addresses), and Privacy Pro (VPN + Personal
+  Information Removal + Identity Theft Restoration).
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+tags:
+  - Search
+  - Privacy
+  - Browser
+  - AI Chat
+  - Email Protection
+  - VPN
+  - Trackers
+  - Identity
+created: '2026-05-23'
+modified: '2026-05-23'
+specificationVersion: '0.19'
+apis:
+  - aid: duckduckgo:instant-answer-api
+    name: DuckDuckGo Instant Answer API
+    humanURL: https://duckduckgo.com/api
+    baseURL: https://api.duckduckgo.com
+    tags:
+      - Search
+      - Instant Answer
+      - Public API
+      - Free
+    description: >-
+      The DuckDuckGo Instant Answer API returns the boxed answer that appears
+      above DuckDuckGo search results - topic summaries (largely sourced from
+      Wikipedia / structured sites), definitions, categories, disambiguations,
+      and !bang redirects. It is a free, key-less GET endpoint that returns
+      JSON (default), JSON-P (via callback) or XML. It does not return the
+      DuckDuckGo search-results listing itself; it returns only zero-click /
+      instant-answer payloads (Abstract, Answer, Definition, RelatedTopics,
+      Results, Redirect for bangs, plus Image/Heading/Type metadata).
+      Attribution to DuckDuckGo is required when displayed.
+    properties:
+      - type: Documentation
+        url: https://duckduckgo.com/api
+      - type: OpenAPI
+        url: openapi/instant-answer-openapi.yml
+      - type: Examples
+        url: examples/
+      - type: Capabilities
+        url: capabilities/shared/instant-answer-capabilities.yaml
+      - type: SpectralRules
+        url: rules/instant-answer-rules.yml
+      - type: JSONSchema
+        url: json-schema/instant-answer-response-schema.json
+      - type: JSONLD
+        url: json-ld/duckduckgo-context.jsonld
+      - type: Pricing
+        url: https://duckduckgo.com/api
+  - aid: duckduckgo:duck-ai
+    name: Duck.ai Anonymous AI Chat
+    humanURL: https://duck.ai/
+    baseURL: https://duck.ai
+    tags:
+      - AI Chat
+      - LLM Proxy
+      - Privacy
+      - Anonymous
+    description: >-
+      Duck.ai is DuckDuckGo's anonymizing proxy in front of third-party LLMs.
+      Free tier currently includes Anthropic Claude 4.5 Haiku, Meta Llama 4
+      Scout, Mistral Small 3 24B, OpenAI GPT-4o mini / GPT-5 mini / gpt-oss-120b.
+      Duck.ai Plus adds GPT-4o, GPT-5.2, Claude Sonnet 4.5, Llama 4 Maverick.
+      Duck.ai Pro adds Claude Opus 4.6, higher reasoning effort and 2x usage
+      limits. DuckDuckGo strips IP / identifiers before forwarding to upstream
+      model providers and does not retain prompts or train on them. There is
+      no public REST API; access is via the web UI and the in-browser
+      integration in DuckDuckGo Browser.
+    properties:
+      - type: Documentation
+        url: https://duckduckgo.com/duckduckgo-help-pages/duckai/
+      - type: Portal
+        url: https://duck.ai/
+      - type: Pricing
+        url: plans/duckduckgo-plans-pricing.yml
+      - type: Capabilities
+        url: capabilities/shared/duck-ai-capabilities.yaml
+  - aid: duckduckgo:tracker-radar
+    name: DuckDuckGo Tracker Radar Dataset
+    humanURL: https://github.com/duckduckgo/tracker-radar
+    baseURL: https://raw.githubusercontent.com/duckduckgo/tracker-radar/main/
+    tags:
+      - Trackers
+      - Open Data
+      - Privacy Dataset
+      - JSON
+    description: >-
+      Tracker Radar is the open dataset that powers DuckDuckGo's tracker and
+      fingerprinting protection. It is a JSON corpus of the most common
+      third-party domains on the web, with metadata covering behavior,
+      classification, ownership, prevalence, fingerprinting, cookies, privacy
+      policies, and performance. Distributed under Creative Commons
+      BY-NC-SA 4.0 (commercial licensing available on request). Files are
+      addressable as raw JSON under /domains in the GitHub repo, so it is
+      consumable as a static read-only "data API" over HTTPS.
+    properties:
+      - type: SourceCode
+        url: https://github.com/duckduckgo/tracker-radar
+      - type: License
+        url: https://creativecommons.org/licenses/by-nc-sa/4.0/
+      - type: JSONSchema
+        url: json-schema/tracker-radar-domain-schema.json
+      - type: Examples
+        url: examples/tracker-radar-domain-example.json
+  - aid: duckduckgo:bang-redirector
+    name: DuckDuckGo !Bang Redirector
+    humanURL: https://duckduckgo.com/bangs
+    baseURL: https://duckduckgo.com/
+    tags:
+      - Search
+      - Redirect
+      - Bang
+    description: >-
+      The !bang system - in place since 2008 and now spanning thousands of
+      destinations - lets a query like "!w filter bubble" 302-redirect to the
+      destination site's own search (Wikipedia in that example). When called
+      via the Instant Answer API, a bang query returns a Redirect field with
+      the target URL rather than performing the redirect, so it can be used
+      programmatically as a normalized "search-on-other-site" router.
+    properties:
+      - type: Documentation
+        url: https://duckduckgo.com/bangs
+      - type: Submission
+        url: https://duckduckgo.com/newbang
+common:
+  - type: Website
+    url: https://duckduckgo.com/
+  - type: Portal
+    url: https://duckduckgo.com/duckduckgo-help-pages/
+  - type: Blog
+    url: https://spreadprivacy.com/
+  - type: BlogRSS
+    url: https://spreadprivacy.com/rss/
+  - type: GitHubOrganization
+    url: https://github.com/duckduckgo
+  - type: SourceCode
+    url: https://github.com/duckduckgo
+  - type: Browser
+    title: DuckDuckGo Browser
+    url: https://duckduckgo.com/app
+  - type: AIChat
+    title: Duck.ai
+    url: https://duck.ai/
+  - type: EmailProtection
+    url: https://duckduckgo.com/email/
+  - type: PrivacyPro
+    url: https://duckduckgo.com/privacy-pro
+  - type: PrivacyPolicy
+    url: https://duckduckgo.com/privacy
+  - type: Plans
+    url: plans/duckduckgo-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/duckduckgo-rate-limits.yml
+  - type: FinOps
+    url: finops/duckduckgo-finops.yml
+  - type: Vocabulary
+    url: vocabulary/duckduckgo-vocabulary.yml
+  - type: JSONLD
+    url: json-ld/duckduckgo-context.jsonld
+integrations:
+  - name: Apple Safari Intelligent Tracking Prevention (uses tracker data feeds)
+  - name: Mozilla Firefox (DuckDuckGo as default search option)
+  - name: Brave Browser (DuckDuckGo selectable as default search)
+  - name: Tor Browser (DuckDuckGo as default search)
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

@@ -1,0 +1,63 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/duckduckgo/main/json-schema/tracker-radar-domain-schema.json",
+  "title": "DuckDuckGo Tracker Radar Domain Record",
+  "description": "JSON Schema for a domain entry in the DuckDuckGo Tracker Radar dataset. Distributed under CC BY-NC-SA 4.0.",
+  "type": "object",
+  "required": ["domain", "owner"],
+  "properties": {
+    "domain": { "type": "string", "description": "Apex domain being described." },
+    "owner": {
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "displayName": { "type": "string" },
+        "privacyPolicy": { "type": "string", "format": "uri" },
+        "url": { "type": "string", "format": "uri" }
+      }
+    },
+    "source": { "type": "array", "items": { "type": "string" } },
+    "prevalence": {
+      "type": "number",
+      "description": "Fraction (0-1) of crawled sites on which this domain was observed.",
+      "minimum": 0,
+      "maximum": 1
+    },
+    "sites": { "type": "integer", "minimum": 0 },
+    "subdomains": { "type": "array", "items": { "type": "string" } },
+    "cnames": { "type": "array", "items": { "type": "object" } },
+    "fingerprinting": {
+      "type": "integer",
+      "description": "Fingerprinting score 0-3.",
+      "minimum": 0,
+      "maximum": 3
+    },
+    "cookies": { "type": "number", "minimum": 0, "maximum": 1 },
+    "categories": { "type": "array", "items": { "type": "string" } },
+    "performance": {
+      "type": "object",
+      "properties": {
+        "time": { "type": "number" },
+        "size": { "type": "number" },
+        "cpu": { "type": "number" },
+        "cache": { "type": "number" }
+      }
+    },
+    "types": { "type": "object", "additionalProperties": { "type": "integer" } },
+    "resources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "rule": { "type": "string" },
+          "cookies": { "type": "number" },
+          "fingerprinting": { "type": "integer" },
+          "subdomains": { "type": "array", "items": { "type": "string" } },
+          "apis": { "type": "object", "additionalProperties": true },
+          "type": { "type": "string" }
+        }
+      }
+    },
+    "nameservers": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,29 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.duckduckgo.com/?q=!w%20filter%20bubble&format=json&no_redirect=1",
+    "headers": {
+      "Accept": "application/json"
+    }
+  },
+  "response": {
+    "status": 200,
+    "headers": {
+      "Content-Type": "application/x-javascript"
+    },
+    "body": {
+      "Abstract": "",
+      "AbstractText": "",
+      "AbstractSource": "",
+      "AbstractURL": "",
+      "Heading": "",
+      "Answer": "",
+      "AnswerType": "",
+      "Definition": "",
+      "RelatedTopics": [],
+      "Results": [],
+      "Type": "",
+      "Redirect": "https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble"
+    }
+  }
+}
