@@ -171,6 +171,8 @@ common:
     url: vocabulary/duckduckgo-vocabulary.yml
   - type: JSONLD
     url: json-ld/duckduckgo-context.jsonld
+  - type: LLMsTxt
+    url: https://duck.ai/llms.txt
 integrations:
   - name: Apple Safari Intelligent Tracking Prevention (uses tracker data feeds)
   - name: Mozilla Firefox (DuckDuckGo as default search option)
