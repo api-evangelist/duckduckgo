@@ -2,6 +2,13 @@
   "repo": "duckduckgo",
   "feeds": [
     {
+      "source": "https://spreadprivacy.com/rss/",
+      "feed_url": "https://spreadprivacy.com/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
       "source": "https://duckduckgo.com/duckduckgo-help-pages/",
       "feed_url": "https://duckduckgo.com/duckduckgo-help-pages/",
       "title": "",
@@ -17,5 +24,5 @@
     }
   ],
   "post_count": 0,
-  "fetched": "2026-06-01T23:35:02Z"
+  "fetched": "2026-06-14T20:42:17Z"
 }
