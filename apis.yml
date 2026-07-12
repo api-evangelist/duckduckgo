@@ -137,6 +137,10 @@ apis:
       - type: Submission
         url: https://duckduckgo.com/newbang
 common:
+  - type: VulnerabilityDisclosure
+    url: security/duckduckgo-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/duckduckgo-domain-security.yml
   - type: Website
     url: https://duckduckgo.com/
   - type: Portal
