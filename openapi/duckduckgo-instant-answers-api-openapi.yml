@@ -1,0 +1,279 @@
+openapi: 3.0.3
+info:
+  title: DuckDuckGo Instant Answer Instant Answers API
+  version: '1.0'
+  description: 'The DuckDuckGo Instant Answer API returns the zero-click "instant answer"
+
+    box that appears above DuckDuckGo search results. It supports topic
+
+    summaries, definitions, categories, disambiguations, and !bang redirects.
+
+    The API is free, key-less, and returns JSON by default. Attribution to
+
+    DuckDuckGo is required when results are displayed.
+
+
+    NOTE: This API does NOT return the DuckDuckGo search-results listing.
+
+    It returns only the instant-answer payload.
+
+    '
+  contact:
+    name: DuckDuckGo
+    url: https://duckduckgo.com/api
+  license:
+    name: DuckDuckGo Instant Answer API Terms
+    url: https://duckduckgo.com/api
+servers:
+- url: https://api.duckduckgo.com
+  description: Production
+tags:
+- name: Instant Answers
+  description: Zero-click answers, abstracts, definitions and disambiguations.
+paths:
+  /:
+    get:
+      operationId: getInstantAnswer
+      summary: Get Instant Answer
+      description: 'Returns the DuckDuckGo Instant Answer for the supplied query `q`.
+
+        For !bang queries (e.g. `!w filter bubble`) the response contains a
+
+        non-empty `Redirect` field pointing at the destination site''s search
+
+        results. For topical queries, expect `Abstract*`, `RelatedTopics`,
+
+        and optionally `Image` / `Infobox`. Empty fields are normal when no
+
+        instant answer is available for the query.
+
+        '
+      tags:
+      - Instant Answers
+      parameters:
+      - name: q
+        in: query
+        required: true
+        description: Query string.
+        schema:
+          type: string
+        example: apple
+      - name: format
+        in: query
+        required: false
+        description: Response format. JSON is the default for programmatic use.
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      - name: pretty
+        in: query
+        required: false
+        description: Pretty-print JSON when set to 1.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: no_html
+        in: query
+        required: false
+        description: Strip HTML from response text fields when set to 1.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: skip_disambig
+        in: query
+        required: false
+        description: Skip disambiguation responses when set to 1.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: no_redirect
+        in: query
+        required: false
+        description: Skip HTTP redirects for !bang queries; return the redirect URL in the body instead.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: callback
+        in: query
+        required: false
+        description: JSON-P callback function name. When set, response is returned as JSON-P.
+        schema:
+          type: string
+      responses:
+        '200':
+          description: Instant answer payload.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/InstantAnswer'
+              examples:
+                topicAbstract:
+                  $ref: '#/components/examples/TopicAbstract'
+                bangRedirect:
+                  $ref: '#/components/examples/BangRedirect'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/InstantAnswer'
+components:
+  schemas:
+    Result:
+      type: object
+      properties:
+        Result:
+          type: string
+        Icon:
+          $ref: '#/components/schemas/Icon'
+        FirstURL:
+          type: string
+          format: uri
+        Text:
+          type: string
+    Icon:
+      type: object
+      properties:
+        URL:
+          type: string
+        Height:
+          oneOf:
+          - type: string
+          - type: integer
+        Width:
+          oneOf:
+          - type: string
+          - type: integer
+    InstantAnswer:
+      type: object
+      description: DuckDuckGo Instant Answer envelope.
+      properties:
+        Abstract:
+          type: string
+          description: Topic summary (may include HTML).
+        AbstractText:
+          type: string
+          description: Topic summary, plain text.
+        AbstractSource:
+          type: string
+          description: Source name (typically Wikipedia).
+        AbstractURL:
+          type: string
+          format: uri
+          description: Deep link to the source page for the abstract.
+        Image:
+          type: string
+          description: Image URL associated with the topic.
+        ImageHeight:
+          type: string
+        ImageWidth:
+          type: string
+        ImageIsLogo:
+          type: string
+          description: 1 if the image is a logo, 0 otherwise.
+        Heading:
+          type: string
+          description: Topic heading.
+        Answer:
+          type: string
+          description: Instant answer value (e.g. calculator result).
+        AnswerType:
+          type: string
+          description: Type of instant answer (e.g. calc, color_code).
+        Definition:
+          type: string
+          description: Dictionary definition text.
+        DefinitionSource:
+          type: string
+          description: Source of the definition.
+        DefinitionURL:
+          type: string
+          format: uri
+        RelatedTopics:
+          type: array
+          description: Related topic items - either Result entries or Topic groups.
+          items:
+            $ref: '#/components/schemas/RelatedTopic'
+        Results:
+          type: array
+          description: Direct external results matching the query.
+          items:
+            $ref: '#/components/schemas/Result'
+        Type:
+          type: string
+          description: 'Response type: A=article, D=disambiguation, C=category, N=name, E=exclusive, empty=nothing.'
+        Redirect:
+          type: string
+          format: uri
+          description: For !bang queries, the URL to redirect to.
+        Entity:
+          type: string
+          description: Entity type (e.g. company, person).
+        Infobox:
+          type: string
+          description: Infobox data (often empty string when absent).
+        meta:
+          type: object
+          description: Metadata about the source and DuckDuckGo handling of the query.
+          additionalProperties: true
+    RelatedTopic:
+      type: object
+      properties:
+        Result:
+          type: string
+          description: HTML snippet for the related topic.
+        Icon:
+          $ref: '#/components/schemas/Icon'
+        FirstURL:
+          type: string
+          format: uri
+        Text:
+          type: string
+        Topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelatedTopic'
+        Name:
+          type: string
+          description: Group name when this entry is a topic group.
+  examples:
+    TopicAbstract:
+      summary: Topic abstract for "apple"
+      value:
+        Abstract: ''
+        AbstractText: ''
+        AbstractSource: Wikipedia
+        AbstractURL: https://en.wikipedia.org/wiki/Apple
+        Heading: Apple
+        Answer: ''
+        AnswerType: ''
+        Definition: ''
+        RelatedTopics:
+        - Result: <a href="https://duckduckgo.com/Apple">Apple</a>
+          FirstURL: https://duckduckgo.com/Apple
+          Text: Apple - fruit and tree
+        Results: []
+        Type: A
+        Redirect: ''
+    BangRedirect:
+      summary: bang redirect
+      value:
+        Abstract: ''
+        AbstractText: ''
+        Answer: ''
+        Results: []
+        RelatedTopics: []
+        Type: ''
+        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble

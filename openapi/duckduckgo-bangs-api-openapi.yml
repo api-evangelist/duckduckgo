@@ -1,16 +1,23 @@
 openapi: 3.0.3
 info:
-  title: DuckDuckGo Instant Answer API
+  title: DuckDuckGo Instant Answer Bangs API
   version: '1.0'
-  description: |
-    The DuckDuckGo Instant Answer API returns the zero-click "instant answer"
+  description: 'The DuckDuckGo Instant Answer API returns the zero-click "instant answer"
+
     box that appears above DuckDuckGo search results. It supports topic
+
     summaries, definitions, categories, disambiguations, and !bang redirects.
+
     The API is free, key-less, and returns JSON by default. Attribution to
+
     DuckDuckGo is required when results are displayed.
 
+
     NOTE: This API does NOT return the DuckDuckGo search-results listing.
+
     It returns only the instant-answer payload.
+
+    '
   contact:
     name: DuckDuckGo
     url: https://duckduckgo.com/api
@@ -18,82 +25,95 @@ info:
     name: DuckDuckGo Instant Answer API Terms
     url: https://duckduckgo.com/api
 servers:
-  - url: https://api.duckduckgo.com
-    description: Production
+- url: https://api.duckduckgo.com
+  description: Production
 tags:
-  - name: Instant Answers
-    description: Zero-click answers, abstracts, definitions and disambiguations.
-  - name: Bangs
-    description: Resolve !bang queries to redirect URLs.
+- name: Bangs
+  description: Resolve !bang queries to redirect URLs.
 paths:
   /:
     get:
       operationId: getInstantAnswer
       summary: Get Instant Answer
-      description: |
-        Returns the DuckDuckGo Instant Answer for the supplied query `q`.
+      description: 'Returns the DuckDuckGo Instant Answer for the supplied query `q`.
+
         For !bang queries (e.g. `!w filter bubble`) the response contains a
-        non-empty `Redirect` field pointing at the destination site's search
+
+        non-empty `Redirect` field pointing at the destination site''s search
+
         results. For topical queries, expect `Abstract*`, `RelatedTopics`,
+
         and optionally `Image` / `Infobox`. Empty fields are normal when no
+
         instant answer is available for the query.
+
+        '
       tags:
-        - Instant Answers
-        - Bangs
+      - Bangs
       parameters:
-        - name: q
-          in: query
-          required: true
-          description: Query string.
-          schema:
-            type: string
-          example: apple
-        - name: format
-          in: query
-          required: false
-          description: Response format. JSON is the default for programmatic use.
-          schema:
-            type: string
-            enum: [json, xml]
-            default: json
-        - name: pretty
-          in: query
-          required: false
-          description: Pretty-print JSON when set to 1.
-          schema:
-            type: integer
-            enum: [0, 1]
-            default: 0
-        - name: no_html
-          in: query
-          required: false
-          description: Strip HTML from response text fields when set to 1.
-          schema:
-            type: integer
-            enum: [0, 1]
-            default: 0
-        - name: skip_disambig
-          in: query
-          required: false
-          description: Skip disambiguation responses when set to 1.
-          schema:
-            type: integer
-            enum: [0, 1]
-            default: 0
-        - name: no_redirect
-          in: query
-          required: false
-          description: Skip HTTP redirects for !bang queries; return the redirect URL in the body instead.
-          schema:
-            type: integer
-            enum: [0, 1]
-            default: 0
-        - name: callback
-          in: query
-          required: false
-          description: JSON-P callback function name. When set, response is returned as JSON-P.
-          schema:
-            type: string
+      - name: q
+        in: query
+        required: true
+        description: Query string.
+        schema:
+          type: string
+        example: apple
+      - name: format
+        in: query
+        required: false
+        description: Response format. JSON is the default for programmatic use.
+        schema:
+          type: string
+          enum:
+          - json
+          - xml
+          default: json
+      - name: pretty
+        in: query
+        required: false
+        description: Pretty-print JSON when set to 1.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: no_html
+        in: query
+        required: false
+        description: Strip HTML from response text fields when set to 1.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: skip_disambig
+        in: query
+        required: false
+        description: Skip disambiguation responses when set to 1.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: no_redirect
+        in: query
+        required: false
+        description: Skip HTTP redirects for !bang queries; return the redirect URL in the body instead.
+        schema:
+          type: integer
+          enum:
+          - 0
+          - 1
+          default: 0
+      - name: callback
+        in: query
+        required: false
+        description: JSON-P callback function name. When set, response is returned as JSON-P.
+        schema:
+          type: string
       responses:
         '200':
           description: Instant answer payload.
@@ -111,6 +131,31 @@ paths:
                 $ref: '#/components/schemas/InstantAnswer'
 components:
   schemas:
+    Result:
+      type: object
+      properties:
+        Result:
+          type: string
+        Icon:
+          $ref: '#/components/schemas/Icon'
+        FirstURL:
+          type: string
+          format: uri
+        Text:
+          type: string
+    Icon:
+      type: object
+      properties:
+        URL:
+          type: string
+        Height:
+          oneOf:
+          - type: string
+          - type: integer
+        Width:
+          oneOf:
+          - type: string
+          - type: integer
     InstantAnswer:
       type: object
       description: DuckDuckGo Instant Answer envelope.
@@ -137,7 +182,7 @@ components:
           type: string
         ImageIsLogo:
           type: string
-          description: "1 if the image is a logo, 0 otherwise."
+          description: 1 if the image is a logo, 0 otherwise.
         Heading:
           type: string
           description: Topic heading.
@@ -168,7 +213,7 @@ components:
             $ref: '#/components/schemas/Result'
         Type:
           type: string
-          description: "Response type: A=article, D=disambiguation, C=category, N=name, E=exclusive, empty=nothing."
+          description: 'Response type: A=article, D=disambiguation, C=category, N=name, E=exclusive, empty=nothing.'
         Redirect:
           type: string
           format: uri
@@ -203,31 +248,6 @@ components:
         Name:
           type: string
           description: Group name when this entry is a topic group.
-    Result:
-      type: object
-      properties:
-        Result:
-          type: string
-        Icon:
-          $ref: '#/components/schemas/Icon'
-        FirstURL:
-          type: string
-          format: uri
-        Text:
-          type: string
-    Icon:
-      type: object
-      properties:
-        URL:
-          type: string
-        Height:
-          oneOf:
-            - type: string
-            - type: integer
-        Width:
-          oneOf:
-            - type: string
-            - type: integer
   examples:
     TopicAbstract:
       summary: Topic abstract for "apple"
@@ -241,14 +261,14 @@ components:
         AnswerType: ''
         Definition: ''
         RelatedTopics:
-          - Result: '<a href="https://duckduckgo.com/Apple">Apple</a>'
-            FirstURL: https://duckduckgo.com/Apple
-            Text: Apple - fruit and tree
+        - Result: <a href="https://duckduckgo.com/Apple">Apple</a>
+          FirstURL: https://duckduckgo.com/Apple
+          Text: Apple - fruit and tree
         Results: []
         Type: A
         Redirect: ''
     BangRedirect:
-      summary: !w bang redirect
+      summary: bang redirect
       value:
         Abstract: ''
         AbstractText: ''
