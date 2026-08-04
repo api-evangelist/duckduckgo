@@ -1,0 +1,17 @@
+{
+  "provider": "duckduckgo",
+  "sources": [
+    "instant-answer-openapi.yml"
+  ],
+  "outputs": [
+    "duckduckgo-bangs-api-openapi.yml",
+    "duckduckgo-instant-answers-api-openapi.yml"
+  ],
+  "archived": [
+    "archived openapi/instant-answer-openapi.yml"
+  ],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
