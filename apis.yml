@@ -60,8 +60,6 @@ apis:
     url: https://duck.ai/
   - type: Pricing
     url: plans/duckduckgo-plans-pricing.yml
-  - type: Capabilities
-    url: capabilities/shared/duck-ai-capabilities.yaml
 - aid: duckduckgo:tracker-radar
   name: DuckDuckGo Tracker Radar Dataset
   humanURL: https://github.com/duckduckgo/tracker-radar
@@ -120,8 +118,6 @@ apis:
     url: https://duckduckgo.com/api
   - type: Examples
     url: examples/
-  - type: Capabilities
-    url: capabilities/shared/instant-answer-capabilities.yaml
   - type: SpectralRules
     url: rules/instant-answer-rules.yml
   - type: JSONSchema
@@ -144,8 +140,6 @@ apis:
     url: https://duckduckgo.com/api
   - type: Examples
     url: examples/
-  - type: Capabilities
-    url: capabilities/shared/instant-answer-capabilities.yaml
   - type: SpectralRules
     url: rules/instant-answer-rules.yml
   - type: JSONSchema
@@ -155,6 +149,10 @@ apis:
   - type: Pricing
     url: https://duckduckgo.com/api
 common:
+  - type: IssueTracker
+    url: https://github.com/duckduckgo/tracker-radar/issues
+  - type: Releases
+    url: https://github.com/duckduckgo/tracker-radar/releases
   - type: VulnerabilityDisclosure
     url: security/duckduckgo-vulnerability-disclosure.yml
   - type: DomainSecurity
