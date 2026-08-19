@@ -1,0 +1,174 @@
+{
+  "item": [
+    {
+      "id": "d7f22651-7713-4f9a-9d82-ffdf9f4b1684",
+      "name": "Bangs",
+      "description": {
+        "content": "Resolve !bang queries to redirect URLs.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c6071ec6-f9e0-4664-8da9-c230f35a211e",
+          "name": "Get Instant Answer",
+          "request": {
+            "name": "Get Instant Answer",
+            "description": {
+              "content": "Returns the DuckDuckGo Instant Answer for the supplied query `q`.\nFor !bang queries (e.g. `!w filter bubble`) the response contains a\nnon-empty `Redirect` field pointing at the destination site's search\nresults. For topical queries, expect `Abstract*`, `RelatedTopics`,\nand optionally `Image` / `Infobox`. Empty fields are normal when no\ninstant answer is available for the query.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                ""
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "q",
+                  "value": "<string>",
+                  "description": "(Required) Query string."
+                },
+                {
+                  "disabled": false,
+                  "key": "format",
+                  "value": "json",
+                  "description": "Response format. JSON is the default for programmatic use."
+                },
+                {
+                  "disabled": false,
+                  "key": "pretty",
+                  "value": "0",
+                  "description": "Pretty-print JSON when set to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "no_html",
+                  "value": "0",
+                  "description": "Strip HTML from response text fields when set to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "skip_disambig",
+                  "value": "0",
+                  "description": "Skip disambiguation responses when set to 1."
+                },
+                {
+                  "disabled": false,
+                  "key": "no_redirect",
+                  "value": "0",
+                  "description": "Skip HTTP redirects for !bang queries; return the redirect URL in the body instead."
+                },
+                {
+                  "disabled": false,
+                  "key": "callback",
+                  "value": "<string>",
+                  "description": "JSON-P callback function name. When set, response is returned as JSON-P."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5fde98af-3a9e-4602-a574-a3953ccd9711",
+              "name": "Instant answer payload.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    ""
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "q",
+                      "value": "apple"
+                    },
+                    {
+                      "key": "format",
+                      "value": "json"
+                    },
+                    {
+                      "key": "pretty",
+                      "value": "0"
+                    },
+                    {
+                      "key": "no_html",
+                      "value": "0"
+                    },
+                    {
+                      "key": "skip_disambig",
+                      "value": "0"
+                    },
+                    {
+                      "key": "no_redirect",
+                      "value": "0"
+                    },
+                    {
+                      "key": "callback",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"Abstract\": \"\",\n  \"AbstractText\": \"\",\n  \"AbstractSource\": \"Wikipedia\",\n  \"AbstractURL\": \"https://en.wikipedia.org/wiki/Apple\",\n  \"Heading\": \"Apple\",\n  \"Answer\": \"\",\n  \"AnswerType\": \"\",\n  \"Definition\": \"\",\n  \"RelatedTopics\": [\n    {\n      \"Result\": \"<a href=\\\"https://duckduckgo.com/Apple\\\">Apple</a>\",\n      \"FirstURL\": \"https://duckduckgo.com/Apple\",\n      \"Text\": \"Apple - fruit and tree\"\n    }\n  ],\n  \"Results\": [],\n  \"Type\": \"A\",\n  \"Redirect\": \"\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.duckduckgo.com",
+      "key": "baseUrl"
+    }
+  ],
+  "info": {
+    "_postman_id": "fa0e48eb-4154-4672-b3b0-00a34c765729",
+    "name": "DuckDuckGo Instant Answer Bangs API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The DuckDuckGo Instant Answer API returns the zero-click \"instant answer\"\nbox that appears above DuckDuckGo search results. It supports topic\nsummaries, definitions, categories, disambiguations, and !bang redirects.\nThe API is free, key-less, and returns JSON by default. Attribution to\nDuckDuckGo is required when results are displayed.\n\nNOTE: This API does NOT return the DuckDuckGo search-results listing.\nIt returns only the instant-answer payload.\n\n\nContact Support:\n Name: DuckDuckGo",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,73 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "DuckDuckGo Instant Answer Bangs API",
+    "version": "1.0"
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Bangs",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Instant Answer",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.duckduckgo.com/",
+            "params": [
+              {
+                "name": "q",
+                "value": "apple",
+                "type": "query",
+                "description": "Query string."
+              },
+              {
+                "name": "format",
+                "value": "",
+                "type": "query",
+                "description": "Response format. JSON is the default for programmatic use."
+              },
+              {
+                "name": "pretty",
+                "value": "",
+                "type": "query",
+                "description": "Pretty-print JSON when set to 1."
+              },
+              {
+                "name": "no_html",
+                "value": "",
+                "type": "query",
+                "description": "Strip HTML from response text fields when set to 1."
+              },
+              {
+                "name": "skip_disambig",
+                "value": "",
+                "type": "query",
+                "description": "Skip disambiguation responses when set to 1."
+              },
+              {
+                "name": "no_redirect",
+                "value": "",
+                "type": "query",
+                "description": "Skip HTTP redirects for !bang queries; return the redirect URL in the body instead."
+              },
+              {
+                "name": "callback",
+                "value": "",
+                "type": "query",
+                "description": "JSON-P callback function name. When set, response is returned as JSON-P."
+              }
+            ]
+          },
+          "docs": "Returns the DuckDuckGo Instant Answer for the supplied query `q`.\nFor !bang queries (e.g. `!w filter bubble`) the response contains a\nnon-empty `Redirect` field pointing at the destination site's search\nresults. For topical queries, expect `Abstract*`, `RelatedTopics`,\nand optionally `Image` / `Infobox`. Empty fields are normal when no\ninstant answer is available for the query.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
