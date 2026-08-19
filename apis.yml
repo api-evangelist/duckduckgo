@@ -35,7 +35,7 @@ tags:
   - Identity
 created: '2026-05-23'
 modified: '2026-05-23'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: duckduckgo:duck-ai
   name: Duck.ai Anonymous AI Chat
