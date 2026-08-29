@@ -11,6 +11,19 @@ description: >-
   training on prompts), the Tracker Radar open dataset (CC BY-NC-SA), Email
   Protection (@duck.com forwarding addresses), and Privacy Pro (VPN + Personal
   Information Removal + Identity Theft Restoration).
+deliveryModel:
+  model: unknown
+  open_source: unknown
+  commercial: true
+  callable_host: true
+  label: Delivery model not determined — needs a product licence on record
+  confidence: low
+  source:
+  - openapi
+  - pricing
+  - repository-unlicensed
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: freemium
   onboarding: unknown
