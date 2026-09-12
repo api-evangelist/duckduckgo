@@ -2,15 +2,6 @@
   "repo": "duckduckgo",
   "feeds": [
     {
-      "source": "https://spreadprivacy.com/rss/",
-      "feed_url": "https://spreadprivacy.com/rss/",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
-    },
-    {
       "source": "https://duckduckgo.com/duckduckgo-help-pages/",
       "feed_url": "https://duckduckgo.com/duckduckgo-help-pages/",
       "title": "",
@@ -22,13 +13,18 @@
       "feed_url": "https://spreadprivacy.com/rss/",
       "title": "",
       "saved": 0,
-      "method": "discovered",
-      "nature": "undetermined",
-      "nature_basis": null
+      "method": "discovered"
+    },
+    {
+      "source": "https://spreadprivacy.com/rss/",
+      "feed_url": "https://spreadprivacy.com/rss/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
   "post_count": 18,
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
   "feed_nature_note": "Whether these posts are the vendor publishing or its support community, decided on the URL path grammar of the saved posts -- not the hostname, which carries both on Khoros, and not author diversity, which flags large vendor blogs as forums. 'undetermined' means undetermined."
