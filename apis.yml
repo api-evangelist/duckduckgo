@@ -117,28 +117,6 @@ apis:
     url: https://duckduckgo.com/bangs
   - type: Submission
     url: https://duckduckgo.com/newbang
-- aid: duckduckgo:duckduckgo-bangs-api
-  name: DuckDuckGo Bangs API
-  description: Resolve !bang queries to redirect URLs.
-  humanURL: https://duckduckgo.com/api
-  baseURL: https://api.duckduckgo.com
-  tags:
-  - Bangs
-  properties:
-  - type: OpenAPI
-    url: openapi/duckduckgo-bangs-api-openapi.yml
-  - type: Documentation
-    url: https://duckduckgo.com/api
-  - type: Examples
-    url: examples/
-  - type: SpectralRules
-    url: rules/instant-answer-rules.yml
-  - type: JSONSchema
-    url: json-schema/instant-answer-response-schema.json
-  - type: JSONLD
-    url: json-ld/duckduckgo-context.jsonld
-  - type: Pricing
-    url: https://duckduckgo.com/api
 - aid: duckduckgo:duckduckgo-instant-answers-api
   name: DuckDuckGo Instant Answers API
   description: Zero-click answers, abstracts, definitions and disambiguations.
