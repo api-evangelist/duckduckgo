@@ -1,17 +1,21 @@
 {
   "provider": "duckduckgo",
   "sources": [
-    "instant-answer-openapi.yml"
+    "_original/instant-answer-openapi.yml"
   ],
   "outputs": [
-    "duckduckgo-bangs-api-openapi.yml",
     "duckduckgo-instant-answers-api-openapi.yml"
   ],
-  "archived": [
-    "archived openapi/instant-answer-openapi.yml"
-  ],
+  "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "instant-answer-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "instant-answer-openapi.yml: multi-axis tagging (2 tags, 1 first tags, 2.00x duplication over 1 operations) \u2014 split on first tag, 1 operations narrowed",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "duckduckgo-instant-answers-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

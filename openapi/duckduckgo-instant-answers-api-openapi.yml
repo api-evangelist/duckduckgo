@@ -1,4 +1,4 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: DuckDuckGo Instant Answer Instant Answers API
   version: '1.0'
@@ -15,9 +15,7 @@ info:
 
     NOTE: This API does NOT return the DuckDuckGo search-results listing.
 
-    It returns only the instant-answer payload.
-
-    '
+    It returns only the instant-answer payload.'
   contact:
     name: DuckDuckGo
     url: https://duckduckgo.com/api
@@ -45,9 +43,7 @@ paths:
 
         and optionally `Image` / `Infobox`. Empty fields are normal when no
 
-        instant answer is available for the query.
-
-        '
+        instant answer is available for the query.'
       tags:
       - Instant Answers
       parameters:
@@ -131,11 +127,12 @@ paths:
                 $ref: '#/components/schemas/InstantAnswer'
 components:
   schemas:
-    Result:
+    RelatedTopic:
       type: object
       properties:
         Result:
           type: string
+          description: HTML snippet for the related topic.
         Icon:
           $ref: '#/components/schemas/Icon'
         FirstURL:
@@ -143,19 +140,13 @@ components:
           format: uri
         Text:
           type: string
-    Icon:
-      type: object
-      properties:
-        URL:
+        Topics:
+          type: array
+          items:
+            $ref: '#/components/schemas/RelatedTopic'
+        Name:
           type: string
-        Height:
-          oneOf:
-          - type: string
-          - type: integer
-        Width:
-          oneOf:
-          - type: string
-          - type: integer
+          description: Group name when this entry is a topic group.
     InstantAnswer:
       type: object
       description: DuckDuckGo Instant Answer envelope.
@@ -228,12 +219,24 @@ components:
           type: object
           description: Metadata about the source and DuckDuckGo handling of the query.
           additionalProperties: true
-    RelatedTopic:
+    Icon:
+      type: object
+      properties:
+        URL:
+          type: string
+        Height:
+          oneOf:
+          - type: string
+          - type: integer
+        Width:
+          oneOf:
+          - type: string
+          - type: integer
+    Result:
       type: object
       properties:
         Result:
           type: string
-          description: HTML snippet for the related topic.
         Icon:
           $ref: '#/components/schemas/Icon'
         FirstURL:
@@ -241,13 +244,6 @@ components:
           format: uri
         Text:
           type: string
-        Topics:
-          type: array
-          items:
-            $ref: '#/components/schemas/RelatedTopic'
-        Name:
-          type: string
-          description: Group name when this entry is a topic group.
   examples:
     TopicAbstract:
       summary: Topic abstract for "apple"
