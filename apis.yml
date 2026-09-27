@@ -12,17 +12,20 @@ description: >-
   Protection (@duck.com forwarding addresses), and Privacy Pro (VPN + Personal
   Information Removal + Identity Theft Restoration).
 deliveryModel:
-  model: unknown
+  model: saas
+  license_evidence:
+    not_product:
+    - duckduckgo/tracker-radar
   open_source: unknown
   commercial: true
   callable_host: true
-  label: Delivery model not determined — needs a product licence on record
+  label: Hosted service · you call their endpoint
   confidence: low
   source:
   - openapi
   - pricing
-  - repository-unlicensed
-  generated: '2026-08-28'
+  - repository-not-product
+  generated: '2026-09-25'
   method: derived
 accessModel:
   pricing: freemium
@@ -101,7 +104,6 @@ apis:
 - aid: duckduckgo:bang-redirector
   name: DuckDuckGo !Bang Redirector
   humanURL: https://duckduckgo.com/bangs
-  baseURL: https://duckduckgo.com/
   tags:
   - Search
   - Redirect
