@@ -127,18 +127,19 @@ paths:
                 $ref: '#/components/schemas/InstantAnswer'
 components:
   schemas:
-    Result:
+    Icon:
       type: object
       properties:
-        Result:
+        URL:
           type: string
-        Icon:
-          $ref: '#/components/schemas/Icon'
-        FirstURL:
-          type: string
-          format: uri
-        Text:
-          type: string
+        Height:
+          oneOf:
+          - type: string
+          - type: integer
+        Width:
+          oneOf:
+          - type: string
+          - type: integer
     InstantAnswer:
       type: object
       description: DuckDuckGo Instant Answer envelope.
@@ -231,30 +232,19 @@ components:
         Name:
           type: string
           description: Group name when this entry is a topic group.
-    Icon:
+    Result:
       type: object
       properties:
-        URL:
+        Result:
           type: string
-        Height:
-          oneOf:
-          - type: string
-          - type: integer
-        Width:
-          oneOf:
-          - type: string
-          - type: integer
+        Icon:
+          $ref: '#/components/schemas/Icon'
+        FirstURL:
+          type: string
+          format: uri
+        Text:
+          type: string
   examples:
-    BangRedirect:
-      summary: bang redirect
-      value:
-        Abstract: ''
-        AbstractText: ''
-        Answer: ''
-        Results: []
-        RelatedTopics: []
-        Type: ''
-        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble
     TopicAbstract:
       summary: Topic abstract for "apple"
       value:
@@ -273,3 +263,13 @@ components:
         Results: []
         Type: A
         Redirect: ''
+    BangRedirect:
+      summary: bang redirect
+      value:
+        Abstract: ''
+        AbstractText: ''
+        Answer: ''
+        Results: []
+        RelatedTopics: []
+        Type: ''
+        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble
