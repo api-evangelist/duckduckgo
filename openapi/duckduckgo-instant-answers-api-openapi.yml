@@ -126,20 +126,36 @@ paths:
               schema:
                 $ref: '#/components/schemas/InstantAnswer'
 components:
+  examples:
+    TopicAbstract:
+      summary: Topic abstract for "apple"
+      value:
+        Abstract: ''
+        AbstractText: ''
+        AbstractSource: Wikipedia
+        AbstractURL: https://en.wikipedia.org/wiki/Apple
+        Heading: Apple
+        Answer: ''
+        AnswerType: ''
+        Definition: ''
+        RelatedTopics:
+        - Result: <a href="https://duckduckgo.com/Apple">Apple</a>
+          FirstURL: https://duckduckgo.com/Apple
+          Text: Apple - fruit and tree
+        Results: []
+        Type: A
+        Redirect: ''
+    BangRedirect:
+      summary: bang redirect
+      value:
+        Abstract: ''
+        AbstractText: ''
+        Answer: ''
+        Results: []
+        RelatedTopics: []
+        Type: ''
+        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble
   schemas:
-    Icon:
-      type: object
-      properties:
-        URL:
-          type: string
-        Height:
-          oneOf:
-          - type: string
-          - type: integer
-        Width:
-          oneOf:
-          - type: string
-          - type: integer
     InstantAnswer:
       type: object
       description: DuckDuckGo Instant Answer envelope.
@@ -212,6 +228,19 @@ components:
           type: object
           description: Metadata about the source and DuckDuckGo handling of the query.
           additionalProperties: true
+    Icon:
+      type: object
+      properties:
+        URL:
+          type: string
+        Height:
+          oneOf:
+          - type: string
+          - type: integer
+        Width:
+          oneOf:
+          - type: string
+          - type: integer
     RelatedTopic:
       type: object
       properties:
@@ -244,32 +273,3 @@ components:
           format: uri
         Text:
           type: string
-  examples:
-    TopicAbstract:
-      summary: Topic abstract for "apple"
-      value:
-        Abstract: ''
-        AbstractText: ''
-        AbstractSource: Wikipedia
-        AbstractURL: https://en.wikipedia.org/wiki/Apple
-        Heading: Apple
-        Answer: ''
-        AnswerType: ''
-        Definition: ''
-        RelatedTopics:
-        - Result: <a href="https://duckduckgo.com/Apple">Apple</a>
-          FirstURL: https://duckduckgo.com/Apple
-          Text: Apple - fruit and tree
-        Results: []
-        Type: A
-        Redirect: ''
-    BangRedirect:
-      summary: bang redirect
-      value:
-        Abstract: ''
-        AbstractText: ''
-        Answer: ''
-        Results: []
-        RelatedTopics: []
-        Type: ''
-        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble
