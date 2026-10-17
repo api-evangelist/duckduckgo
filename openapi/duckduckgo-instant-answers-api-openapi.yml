@@ -127,6 +127,16 @@ paths:
                 $ref: '#/components/schemas/InstantAnswer'
 components:
   examples:
+    BangRedirect:
+      summary: bang redirect
+      value:
+        Abstract: ''
+        AbstractText: ''
+        Answer: ''
+        Results: []
+        RelatedTopics: []
+        Type: ''
+        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble
     TopicAbstract:
       summary: Topic abstract for "apple"
       value:
@@ -145,16 +155,6 @@ components:
         Results: []
         Type: A
         Redirect: ''
-    BangRedirect:
-      summary: bang redirect
-      value:
-        Abstract: ''
-        AbstractText: ''
-        Answer: ''
-        Results: []
-        RelatedTopics: []
-        Type: ''
-        Redirect: https://en.wikipedia.org/wiki/Special:Search?search=filter+bubble
   schemas:
     InstantAnswer:
       type: object
@@ -228,19 +228,6 @@ components:
           type: object
           description: Metadata about the source and DuckDuckGo handling of the query.
           additionalProperties: true
-    Icon:
-      type: object
-      properties:
-        URL:
-          type: string
-        Height:
-          oneOf:
-          - type: string
-          - type: integer
-        Width:
-          oneOf:
-          - type: string
-          - type: integer
     RelatedTopic:
       type: object
       properties:
@@ -261,6 +248,19 @@ components:
         Name:
           type: string
           description: Group name when this entry is a topic group.
+    Icon:
+      type: object
+      properties:
+        URL:
+          type: string
+        Height:
+          oneOf:
+          - type: string
+          - type: integer
+        Width:
+          oneOf:
+          - type: string
+          - type: integer
     Result:
       type: object
       properties:
