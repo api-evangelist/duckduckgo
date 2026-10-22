@@ -52,3 +52,36 @@
     detected: '2026-10-21'
   status: not-a-workflow
   arazzo: null
+- slug: duckduckgo-obsidian
+  label: Obsidian
+  partner: obsidian
+  partner_name: Obsidian
+  category: Obsidian community plugin
+  type: marketplace
+  marketplace: obsidian-community-plugins
+  channel: community-plugin
+  evidence: https://github.com/ismailsaoulaj/quickcite
+  source: edge
+  relationship: connector-listing
+  contract_reference:
+    register: Obsidian community-plugins.json (obsidianmd/obsidian-releases@793b5211) + plugin repo README / manifest
+      / source
+    spec_file: null
+    role: obsidian-community-plugin:community
+    registered_name: ismail saoulaj
+    register_id: https://github.com/ismailsaoulaj/quickcite
+    matched_domain: duckduckgo.com
+    matched_by: domain+name-in-listing
+    matched_where: source
+    matched_host: api.duckduckgo.com
+    builder: community
+    plugins:
+    - quickcite
+    downloads_context: 67
+    signal_note: 'ONE edge per provider: a community plugin names the provider in its name/description AND carries
+      the provider''s domain or API host in its README or source. Builder is a named community author (not the provider).
+      Plugin and download counts are context, never counted.'
+    detected_by: sweep-obsidian-community-plugins.py
+    detected: '2026-10-22'
+  status: not-a-workflow
+  arazzo: null

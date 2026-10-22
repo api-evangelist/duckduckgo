@@ -66,6 +66,41 @@ edges:
   badges: &id001
   - Mozilla Recommended
   publisher_verified: *id001
+- partner_name: Obsidian
+  partner: obsidian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: obsidian-community-plugins
+  channel: community-plugin
+  relationship: connector-listing
+  direction: third-party
+  evidence: https://github.com/ismailsaoulaj/quickcite
+  app: QuickCite
+  listing_count: 1
+  category: Obsidian community plugin
+  partner_url: https://obsidian.md/plugins
+  contract_reference:
+    register: Obsidian community-plugins.json (obsidianmd/obsidian-releases@793b5211) + plugin repo README / manifest
+      / source
+    spec_file: null
+    role: obsidian-community-plugin:community
+    registered_name: ismail saoulaj
+    register_id: https://github.com/ismailsaoulaj/quickcite
+    matched_domain: duckduckgo.com
+    matched_by: domain+name-in-listing
+    matched_where: source
+    matched_host: api.duckduckgo.com
+    builder: community
+    plugins:
+    - quickcite
+    downloads_context: 67
+    signal_note: 'ONE edge per provider: a community plugin names the provider in its name/description AND carries
+      the provider''s domain or API host in its README or source. Builder is a named community author (not the provider).
+      Plugin and download counts are context, never counted.'
+    detected_by: sweep-obsidian-community-plugins.py
+    detected: '2026-10-22'
+  detected_by: sweep-obsidian-community-plugins.py
+  first_seen: '2026-10-22'
 generated: '2026-10-20'
 method: searched
 source:
@@ -80,3 +115,7 @@ checked:
 - https://addons.mozilla.org/api/v5/addons/addon/<slug>/
 - https://addons.mozilla.org/api/v5/addons/search/?type=extension&app=firefox
 - https://chromewebstore.google.com/sitemap
+- https://raw.githubusercontent.com/<repo>/HEAD/README.md
+- https://raw.githubusercontent.com/<repo>/HEAD/manifest.json
+- https://raw.githubusercontent.com/obsidianmd/obsidian-releases/793b52114f54b055b760ef47761ec5c93d689804/community-plugin-stats.json
+- https://raw.githubusercontent.com/obsidianmd/obsidian-releases/793b52114f54b055b760ef47761ec5c93d689804/community-plugins.json
