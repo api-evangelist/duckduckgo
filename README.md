@@ -1,4 +1,4 @@
-# DuckDuckGo (duckduckgo)
+# DuckDuckGo
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,132 +66,154 @@
 
 DuckDuckGo is an independent online-privacy company best known for its tracker-free search engine and the DuckDuckGo Browser (iOS, Android, macOS, Windows). It operates the public Instant Answer API at api.duckduckgo.com (free, JSON/XML), the Duck.ai anonymous AI-chat proxy at duck.ai (routes to Anthropic Claude, OpenAI GPT, Meta Llama, Mistral models without storing or training on prompts), the Tracker Radar open dataset (CC BY-NC-SA), Email Protection (@duck.com forwarding addresses), and Privacy Pro (VPN + Personal Information Removal + Identity Theft Restoration).
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/duckduckgo/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/duckduckgo/refs/heads/main/apis.yml)
+**Areas:** Search · Privacy · Browser · AI Chat · Email Protection · VPN · Trackers · Identity
 
-## Tags
+## DuckDuckGo on APIs.io
 
-- Search
-- Privacy
-- Browser
-- AI Chat
-- Email Protection
-- VPN
-- Trackers
-- Identity
+Everything profiled for DuckDuckGo is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/duckduckgo/](https://apis.io/providers/duckduckgo/)** — or go straight to one of the APIs or properties below.
 
-## Timestamps
+### APIs (4)
 
-- **Created:** 2026-05-23
-- **Modified:** 2026-05-23
+- [Duck.ai Anonymous AI Chat](https://apis.io/apis/duckduckgo/duck-ai/) — Duck.ai is DuckDuckGo's anonymizing proxy in front of third-party LLMs. Free tier currently includes Anthropic Claude 4.5 Haiku, Meta Llama 4 Scout, Mistral…
+- [DuckDuckGo Tracker Radar Dataset](https://apis.io/apis/duckduckgo/tracker-radar/) — Tracker Radar is the open dataset that powers DuckDuckGo's tracker and fingerprinting protection. It is a JSON corpus of the most common third-party domains…
+- [DuckDuckGo !Bang Redirector](https://apis.io/apis/duckduckgo/bang-redirector/) — The !bang system - in place since 2008 and now spanning thousands of destinations - lets a query like "!w filter bubble" 302-redirect to the destination…
+- [DuckDuckGo Instant Answers API](https://apis.io/apis/duckduckgo/duckduckgo-instant-answers-api/) — Zero-click answers, abstracts, definitions and disambiguations.
 
-## APIs
+### Published properties
 
-### DuckDuckGo Instant Answer API
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-The DuckDuckGo Instant Answer API returns the boxed answer that appears above DuckDuckGo search results - topic summaries (largely sourced from Wikipedia / structured sites), definitions, categories, disambiguations, and !bang redirects. It is a free, key-less GET endpoint that returns JSON (default), JSON-P (via callback) or XML. It does not return the DuckDuckGo search-results listing itself; it returns only zero-click / instant-answer payloads (Abstract, Answer, Definition, RelatedTopics, Results, Redirect for bangs, plus Image/Heading/Type metadata). Attribution to DuckDuckGo is required when displayed.
+#### JSON Schema (2)
 
-- **Human URL:** [https://duckduckgo.com/api](https://duckduckgo.com/api)
-- **Base URL:** `https://api.duckduckgo.com`
+The data models the API reads and writes.
 
-#### Tags
+- [DuckDuckGo Instant Answer Response](https://apis.io/schemas/duckduckgo/instant-answer-response/)
+- [DuckDuckGo Tracker Radar Domain Record](https://apis.io/schemas/duckduckgo/tracker-radar-domain/)
 
-- Search
-- Instant Answer
-- Public API
-- Free
+#### JSON Structure (1)
 
-#### Properties
+Data models expressed in JSON Structure.
 
-- [Documentation](https://duckduckgo.com/api)
-- [OpenAPI](openapi/instant-answer-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Examples](examples/)
-- [Capabilities](capabilities/shared/instant-answer-capabilities.yaml)
-- [Spectral Rules](rules/instant-answer-rules.yml)
-- [JSON Schema](json-schema/instant-answer-response-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON-LD](json-ld/duckduckgo-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [Pricing](https://duckduckgo.com/api)
+- [Instant Answer Response Structure](https://apis.io/json-structure/duckduckgo/instant-answer-response-structure/)
 
-### Duck.ai Anonymous AI Chat
+#### JSON-LD (1)
 
-Duck.ai is DuckDuckGo's anonymizing proxy in front of third-party LLMs. Free tier currently includes Anthropic Claude 4.5 Haiku, Meta Llama 4 Scout, Mistral Small 3 24B, OpenAI GPT-4o mini / GPT-5 mini / gpt-oss-120b. Duck.ai Plus adds GPT-4o, GPT-5.2, Claude Sonnet 4.5, Llama 4 Maverick. Duck.ai Pro adds Claude Opus 4.6, higher reasoning effort and 2x usage limits. DuckDuckGo strips IP / identifiers before forwarding to upstream model providers and does not retain prompts or train on them. There is no public REST API; access is via the web UI and the in-browser integration in DuckDuckGo Browser.
+Linked-data contexts for the provider's vocabulary.
 
-- **Human URL:** [https://duck.ai/](https://duck.ai/)
-- **Base URL:** `https://duck.ai`
+- [Duckduckgo Context](https://apis.io/jsonld/duckduckgo/duckduckgo-context/)
 
-#### Tags
+#### Vocabulary (1)
 
-- AI Chat
-- LLM Proxy
-- Privacy
-- Anonymous
+The provider's domain terms, defined.
 
-#### Properties
+- [Duckduckgo Vocabulary](https://apis.io/vocabularies/duckduckgo/duckduckgo-vocabulary/)
 
-- [Documentation](https://duckduckgo.com/duckduckgo-help-pages/duckai/)
-- [Portal](https://duck.ai/)
-- [Pricing](plans/duckduckgo-plans-pricing.yml)
-- [Capabilities](capabilities/shared/duck-ai-capabilities.yaml)
+#### Examples (4)
 
-### DuckDuckGo Tracker Radar Dataset
+Example requests and responses.
 
-Tracker Radar is the open dataset that powers DuckDuckGo's tracker and fingerprinting protection. It is a JSON corpus of the most common third-party domains on the web, with metadata covering behavior, classification, ownership, prevalence, fingerprinting, cookies, privacy policies, and performance. Distributed under Creative Commons BY-NC-SA 4.0 (commercial licensing available on request). Files are addressable as raw JSON under /domains in the GitHub repo, so it is consumable as a static read-only "data API" over HTTPS.
+- [Instant Answer Bang Example](https://apis.io/examples/duckduckgo/instant-answer-bang-example/)
+- [Instant Answer Calc Example](https://apis.io/examples/duckduckgo/instant-answer-calc-example/)
+- [Instant Answer Topic Example](https://apis.io/examples/duckduckgo/instant-answer-topic-example/)
+- [Tracker Radar Domain Example](https://apis.io/examples/duckduckgo/tracker-radar-domain-example/)
 
-- **Human URL:** [https://github.com/duckduckgo/tracker-radar](https://github.com/duckduckgo/tracker-radar)
-- **Base URL:** `https://raw.githubusercontent.com/duckduckgo/tracker-radar/main/`
+#### Collections (2)
 
-#### Tags
+Postman and Open Collection request collections.
 
-- Trackers
-- Open Data
-- Privacy Dataset
-- JSON
+- [DuckDuckGo Instant Answer Bangs API](https://apis.io/collections/duckduckgo/open-duckduckgo-bangs-api/)
+- [DuckDuckGo Instant Answer Instant Answers API](https://apis.io/collections/duckduckgo/open-duckduckgo-instant-answers-api/)
 
-#### Properties
+#### Governance rules (2)
 
-- [Source Code](https://github.com/duckduckgo/tracker-radar)
-- [License](https://creativecommons.org/licenses/by-nc-sa/4.0/)
-- [JSON Schema](json-schema/tracker-radar-domain-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [Examples](examples/tracker-radar-domain-example.json)
+Spectral rulesets for the provider's contracts.
 
-### DuckDuckGo !Bang Redirector
+- [DuckDuckGo — jsonschema rules](https://apis.io/rules/duckduckgo/duckduckgo-jsonschema-spectral-rules/)
+- [DuckDuckGo — instant answer rules](https://apis.io/rules/duckduckgo/instant-answer-rules/)
 
-The !bang system - in place since 2008 and now spanning thousands of destinations - lets a query like "!w filter bubble" 302-redirect to the destination site's own search (Wikipedia in that example). When called via the Instant Answer API, a bang query returns a Redirect field with the target URL rather than performing the redirect, so it can be used programmatically as a normalized "search-on-other-site" router.
+#### Security (2)
 
-- **Human URL:** [https://duckduckgo.com/bangs](https://duckduckgo.com/bangs)
-- **Base URL:** `https://duckduckgo.com/`
+Authentication, trust centre, and vulnerability disclosure.
 
-#### Tags
+- [Duckduckgo Domain Security](https://apis.io/security/duckduckgo/duckduckgo-domain-security/)
+- [Duckduckgo Vulnerability Disclosure](https://apis.io/security/duckduckgo/duckduckgo-vulnerability-disclosure/)
 
-- Search
-- Redirect
-- Bang
+#### Plans and pricing (1)
 
-#### Properties
+Published plans, tiers and prices.
 
-- [Documentation](https://duckduckgo.com/bangs)
-- [Submission](https://duckduckgo.com/newbang)
+- [Duckduckgo Plans Pricing](https://apis.io/plans/duckduckgo/duckduckgo-plans-pricing/)
 
-## Common Properties
+#### Rate limits (1)
+
+Published request limits.
+
+- [Duckduckgo Rate Limits](https://apis.io/rate-limits/duckduckgo/duckduckgo-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Duckduckgo Finops](https://apis.io/finops/duckduckgo/duckduckgo-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
 
 - [Website](https://duckduckgo.com/)
-- [Portal](https://duckduckgo.com/duckduckgo-help-pages/)
 - [Blog](https://spreadprivacy.com/)
-- [Blog R S S](https://spreadprivacy.com/rss/)
-- [GitHub Organization](https://github.com/duckduckgo)
-- [Source Code](https://github.com/duckduckgo)
-- [Browser](https://duckduckgo.com/app)
-- [A I Chat](https://duck.ai/)
-- [Email Protection](https://duckduckgo.com/email/)
-- [Privacy Pro](https://duckduckgo.com/privacy-pro)
-- [Privacy Policy](https://duckduckgo.com/privacy)
-- [Plans](plans/duckduckgo-plans-pricing.yml)
-- [Rate Limits](rate-limits/duckduckgo-rate-limits.yml)
-- [Fin Ops](finops/duckduckgo-finops.yml)
-- [Vocabulary](vocabulary/duckduckgo-vocabulary.yml)
-- [JSON-LD](json-ld/duckduckgo-context.jsonld) — [JSON-LD](https://www.w3.org/TR/json-ld11/)
-- [L L Ms Txt](https://duck.ai/llms.txt)
+- [Privacy policy](https://duckduckgo.com/privacy)
+- [GitHub](https://github.com/duckduckgo)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 38.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 64.3 |
+| Contract quality | 57.8 |
+| Contract governance | 27.3 |
+| Operational transparency | 26.3 |
+| Developer ergonomics | 21.4 |
+| Access clarity | 28.9 |
+
+**Agent readiness 21.6** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | — |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | — |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | verified |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 20.6** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/duckduckgo/](https://apis.io/providers/duckduckgo/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for DuckDuckGo: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/duckduckgo/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
